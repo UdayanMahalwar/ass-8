@@ -1,0 +1,74 @@
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+    Node(int val){
+        this->data =val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+Node* add(Node*root , int val){
+    if(root == NULL)
+    {
+        Node* newNode = new Node(val);
+        return newNode;
+    }
+    if(val>root->data)
+    {
+       root->right = add(root->right , val);
+    }
+    else
+    {
+        root->left = add(root->left , val);
+    }
+    return root;
+}
+void inorder(Node* root) {
+    if (root == NULL) return;
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+class Bst{
+    public:
+    Node* BuildBst(){
+        cout<<"enter the val";
+        int val ;
+        cin>>val;
+        Node*root = NULL;
+        if(val==-1)
+        {
+            return root;
+        }
+        if(val != -1)
+        {
+            root = add(root ,val);
+        }
+        while(val != -1)
+        {
+            int store;
+            cout<<"enter the val to insert : ";
+            cin>>store;
+            if(store == -1)
+            {
+                break;
+            }
+            add(root,store);
+        }
+        return root;
+    }
+};
+int main()
+{
+    Bst tree;
+    Node* root = tree.BuildBst();
+    inorder(root);
+    cout << "Inorder traversal of BST: ";
+
+
+    return 0;
+}
