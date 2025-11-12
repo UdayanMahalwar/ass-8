@@ -1,0 +1,20 @@
+void Inorder(TreeNode* head ,vector<int>&store)
+{
+    if(head == NULL)
+    {
+        return;
+    }
+    Inorder(head->left);
+    store.push_back(head->data);
+    Inorder(head->right);
+}
+
+To find inorder successor of let say x(it exists in the tree);
+for(int i = store.size()-1 ; i >0 ; i--)
+{
+    if(store[i] == x)
+    {
+       return store[i-1];
+    }
+}
+return -1
