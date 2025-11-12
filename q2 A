@@ -1,0 +1,24 @@
+bool findNode(Node* root , int &target)
+{
+    if(root == NULL)
+    {
+        return false;
+    }
+    if(root->val == target)
+    {
+        return true;
+    }
+    if(root->val > target)
+    {
+        return findNode(root->left , target);
+    }
+    else
+    {
+        return findNode(root->right , target);
+    }
+}
+
+
+
+
+return findNode( root ,target);
