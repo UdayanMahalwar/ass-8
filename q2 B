@@ -1,0 +1,12 @@
+int max_ele(Node* root)
+{
+    if(root == NULL)
+    {
+        return -1;
+    }
+    while(root->right != NULL)
+    {
+        root = root->right;
+    }
+    return root->val;
+}
